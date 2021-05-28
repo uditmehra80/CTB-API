@@ -2,10 +2,10 @@
 const express = require('express');
 
 //import bodyParser from 'body-parser';
-const bodyParser = require('bodyParser');
+const bodyParser = require('body-parser');
 
 //import usersRoutes from './routes/users.js'
-const usersRoutes = require('usersRoutes');
+const usersRoutes = require('./routes/users.js');
 
 
 const app = express();
