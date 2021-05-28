@@ -1,6 +1,9 @@
-import express from 'express';
-//const express = reuire('express');
-import { v4 as uuidv4 } from 'uuid';   //for id
+//import express from 'express';
+const express = require('express');
+
+//import { v4 as uuidv4 } from 'uuid';   //for id
+//const uuidv4 = require('uuid/v4');
+const uuidv4 = require('uuid').v4
 
 const router = express.Router();
 
