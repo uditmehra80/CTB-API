@@ -4,14 +4,15 @@ var bodyParser =require('body-parser');
 var mongoose = require('mongoose');
 var Book = require('./BookModel');
 
-var db = 'mongodb://127.0.0.1:27017/example';
+var DbUrl = 'mongodb://127.0.0.1:27017/example';
 //when facing compile time error
 var whenFindEroor = {useNewUrlParser: true , useUnifiedTopology: true}; 
 
-mongoose.connect(db, whenFindEroor );
+mongoose.connect(DbUrl, whenFindEroor );
 
 app.get('/',function(req,res){
-    res.send("its working")
+   
+    res.send('<h2>its Working<h2/> <a href="http://localhost:3001/books">Click to Get Data from Mongo</a>');
 });
 
 app.get('/books',function(req,res){
