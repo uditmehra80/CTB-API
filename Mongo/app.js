@@ -1,5 +1,9 @@
 var express = require('express');
 var app = express();
+
+var cors = require('cors');   //FOR diffrent port run on same web like connect to React app
+app.use(cors());
+
 var bodyParser =require('body-parser');
 var mongoose = require('mongoose');
 var Book = require('./BookModel');
@@ -38,7 +42,7 @@ app.get('/books',function(req,res){
 
 //For Getting all data with try and catch Asyn
 
-app.get('/booksAll',async(req,res) => {
+app.get('/booksall',async(req,res) => {
     try{
         console.log('getting books');
          Book.find({})
@@ -69,12 +73,11 @@ app.get('/books/:id',function(req,res){
 });
 
 //For Adding data (1)
-app.post('/book',function(req,res){
+app.post('/books',function(req,res){
     var newBook = new Book();
 
-    newBook.title = req.body.title;
-    newBook.author = req.body.author;
-    newBook.category = req.body.category;
+    newBook.name = req.body.name;
+    newBook.city = req.body.city;
 
     newBook.save(function(err,book){
         if(!err){
@@ -102,7 +105,7 @@ app.post('/book2',function(req,res){
 app.patch('/books/:id',function(req,res){
     Book.findOneAndUpdate(
         { _id:req.params.id},
-    {$set:{title: req.body.title,  author: req.body.author,  category: req.body.category}},
+    {$set:{name: req.body.name,  city: req.body.city}},
     {upsert:true},
     function(err,newBook){
         if(!err){
