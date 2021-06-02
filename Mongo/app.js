@@ -18,9 +18,10 @@ app.use(bodyParser.urlencoded({
 app.get('/',function(req,res){
    
     res.send('<h2>its Working<h2/> <a href="http://localhost:3001/books">Click to Get Data from Mongo</a>');
-});
+}); 
 
 //For Getting all data
+
 app.get('/books',function(req,res){
     console.log('getting books');
     Book.find({})
@@ -33,7 +34,22 @@ app.get('/books',function(req,res){
             console.log(err);
         }
     });
-});
+});          
+
+//For Getting all data with try and catch Asyn
+
+app.get('/booksAll',async(req,res) => {
+    try{
+        console.log('getting books');
+         Book.find({})
+        .exec(function(err,books){
+            res.send(books);
+        });
+    }
+    catch(err){
+        console.log(err);
+    }
+});     
 
 //For Getting id data
 app.get('/books/:id',function(req,res){
