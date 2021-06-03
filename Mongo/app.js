@@ -126,7 +126,7 @@ app.delete('/books/:id',function(req,res){
             console.log("item deleted")
             res.send("item deleted")
         }else{
-            console.log("Erro in delete");
+            console.log("Error  in delete");
             res.send("error in delete")
         }
     });
